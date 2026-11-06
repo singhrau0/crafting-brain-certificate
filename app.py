@@ -31,8 +31,8 @@ app.config.update(SESSION_COOKIE_SECURE=bool(os.getenv("RENDER") or os.getenv("H
 courses = ["Gen AI Internship Course", "Data Analytics Internship Course"]
 tokens = URLSafeTimedSerializer(app.secret_key, salt="certificate-preview")
 dbpath = Path(os.getenv("DATABASE_PATH", "instance/certificates.sqlite3"))
-if os.getenv("RENDER") and not dbpath.is_absolute():
-    raise ValueError("Set DATABASE_PATH to a file on your persistent disk.")
+# if os.getenv("RENDER") and not dbpath.is_absolute():
+#     raise ValueError("Set DATABASE_PATH to a file on your persistent disk.")
 dbpath.parent.mkdir(parents=True, exist_ok=True)
 with sqlite3.connect(dbpath) as setup:
     setup.execute("""CREATE TABLE IF NOT EXISTS certificates (
