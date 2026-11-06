@@ -1,0 +1,4 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}Certificate desk{% endblock %} · Crafting Brain</title><link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}"></head><body>
+{% macro csrf() %}<input type="hidden" name="csrf" value="{{ session.csrf }}">{% endmacro %}
+<header><div class="nav"><a class="brand" href="/">Crafting <strong>Brain</strong></a>{% if session.employee %}<nav><a href="/">Issue certificate</a><a href="/history">History</a><form action="/logout" method="post">{{ csrf() }}<button class="link">Sign out</button></form></nav>{% endif %}</div></header>
+<main>{% for message in get_flashed_messages() %}<p class="notice" role="status">{{ message }}</p>{% endfor %}{% block main %}{% endblock %}</main></body></html>

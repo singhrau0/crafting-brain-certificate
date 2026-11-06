@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Review certificate{% endblock %}{% block main %}
+<h1>Review certificate</h1><section class="card"><h2>{{ data.name }}</h2><p>{{ data.email }}</p><dl><dt>Course</dt><dd>{{ data.course }}</dd><dt>Course dates</dt><dd>{{ data.joined }} – {{ data.completed }}</dd><dt>Duration</dt><dd>{{ duration }}</dd><dt>Completion statement</dt><dd>{{ statement }}</dd></dl>
+<form action="/preview/pdf" method="post" target="_blank">{{ csrf() }}<input type="hidden" name="draft" value="{{ token }}"><button class="secondary">Open PDF preview ↗</button></form><hr>
+{% if not ready %}<p>Sender email is not configured yet. You can save the certificate and email it later from history.</p>{% endif %}
+<form action="/issue" method="post">{{ csrf() }}<input type="hidden" name="draft" value="{{ token }}">{% if ready %}<button name="action" value="send">Issue &amp; email certificate</button>{% endif %}<button class="{{ 'secondary' if ready }}" name="action" value="save">Issue certificate only</button></form><p><a href="/">Return to form</a></p></section>{% endblock %}

@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block title %}Certificate desk sign in{% endblock %}{% block main %}
+<section class="card narrow"><img class="logo" src="/static/logo.png" alt="Crafting Brain"><h1>Certificate desk sign in</h1><form method="post">{{ csrf() }}<label>Email address<input type="email" name="email" autocomplete="username" required></label><label>Password<input type="password" name="password" autocomplete="current-password" required></label><button>Sign in</button></form></section>{% endblock %}
